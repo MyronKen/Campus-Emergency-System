@@ -5,16 +5,13 @@ from cryptography.fernet import Fernet
 from datetime import datetime
 
 # --- Database Connection ---
-# !!! IMPORTANT: Replace with your MySQL credentials
 DB_HOST = "localhost"
 DB_USER = "root"
 DB_PASSWORD = "Qwerty@55"  
 DB_NAME = "emergency_system1"
 
 # --- Use the same encryption key from setup, or a new one for this test ---
-# !!! IMPORTANT: Replace with a valid encryption key
 try:
-    # Replace this with the key you generated earlier or a new one for this test
     key_string = b'-OVOxhYB4JwuD7YYVVjhvPITiHOPTWXmaMaQ39XJkyI=' 
     cipher = Fernet(key_string)
 except (ValueError, TypeError):
@@ -34,7 +31,7 @@ try:
     print("Successfully connected to the database for data insertion.")
 
     # --- Insert a sample user ---
-    # Using a try-except block to avoid errors if the user already exists
+    
     try:
         cursor.execute(
             "INSERT INTO users (username, role) VALUES (%s, %s)",
