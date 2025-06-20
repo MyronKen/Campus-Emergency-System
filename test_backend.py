@@ -1,14 +1,13 @@
-# test_backend.py
+
 import unittest
 import json
-from app import app # Import the Flask app object from your app.py
+from app import app 
 
 class BackendTest(unittest.TestCase):
 
     def setUp(self):
         """Set up a test client for each test."""
         self.app = app.test_client()
-        # Propagate exceptions to the test client
         self.app.testing = True
 
     def test_01_login_and_get_token(self):
@@ -28,8 +27,7 @@ class BackendTest(unittest.TestCase):
                                        content_type='application/json')
         token = json.loads(login_response.data)['access_token']
         headers = {'Authorization': f'Bearer {token}'}
-
-        # Now, test the protected endpoint
+        
         alert_response = self.app.post('/alert',
                                        data=json.dumps({
                                            'user_id': 1,
