@@ -1,18 +1,13 @@
-# db_setup.py
-
 import mysql.connector
 from cryptography.fernet import Fernet
 
 # --- Database Connection ---
-# !!! IMPORTANT: Replace with your MySQL credentials
 DB_HOST = "localhost"
 DB_USER = "root"
 DB_PASSWORD = "Qwerty@55" 
 DB_NAME = "emergency_system1"
 
 # --- Generate an encryption key ---
-# In a real application, you would store this key securely and not generate it every time.
-# For this prototype, we generate it on the fly.
 key = Fernet.generate_key()
 print(f"Generated Encryption Key (for testing): {key.decode()}") # Optional: print key for testing
 cipher = Fernet(key)
